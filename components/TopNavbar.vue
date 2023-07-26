@@ -4,6 +4,7 @@ import TopNavbarElement from "types/TopNavbarElement";
 const { width } = useWindowSize();
 
 const open = ref(false);
+
 const viewPortWidth = computed(() => {
   if (width.value < 1024) return false;
   open.value = false;
@@ -47,8 +48,8 @@ defineProps<{
           <NuxtLink
             v-for="(menuItem, index) in menuItems"
             :key="index"
-            :to="menuItem.link"
             class="w-fit text-lg"
+            :to="menuItem.link"
             @click="open = false"
             >{{ menuItem.name }}</NuxtLink
           >
@@ -73,8 +74,4 @@ defineProps<{
   </ClientOnly>
 </template>
 
-<style scoped>
-.side-navbar {
-  @apply absolute right-0 top-0 z-0 flex w-3/4 flex-col items-start bg-white dark:bg-gray-900;
-}
-</style>
+<style scoped></style>
