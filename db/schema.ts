@@ -8,6 +8,8 @@ import {
   text,
 } from "drizzle-orm/pg-core";
 
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+
 import { sql } from "drizzle-orm";
 export const key_status = pgEnum("key_status", [
   "default",
@@ -72,3 +74,5 @@ export const profiles = pgTable(
     };
   },
 );
+
+export const selectProfileSchema = createSelectSchema(profiles);

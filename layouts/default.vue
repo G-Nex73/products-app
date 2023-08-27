@@ -1,11 +1,20 @@
 <script lang="ts" setup>
+import { selectProfileSchema } from "db/schema";
+import { z } from "zod";
+
 const user = useSupabaseUser();
+
+const profile = ref<z.infer<typeof selectProfileSchema> | null>(null);
+provide("profile", profile);
 watchEffect(() => {
   if (user.value) {
     const { data, status } = useFetch("/api/me", {
       method: "GET",
       headers: useRequestHeaders(["cookie"]),
     });
+    if (status.value === "success")
+      profile.value = selectProfileSchema.parse(data.value);
+    if (status.value === "error") profile.value = null;
   }
 });
 </script>
