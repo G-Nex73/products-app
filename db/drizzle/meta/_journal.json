@@ -1,0 +1,34 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1693056718998,
+      "tag": "0000_powerful_jigsaw",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1693056731228,
+      "tag": "0001_thankful_silver_sable",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1693135532629,
+      "tag": "0002_careless_franklin_richards",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1693136511048,
+      "tag": "0003_exotic_cerise",
+      "breakpoints": true
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import TopNavbarElement from "types/TopNavbarElement";
+import type { TopNavbarElement } from "types/TopNavbarElement";
 
 const { width } = useWindowSize();
 
