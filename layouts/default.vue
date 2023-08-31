@@ -1,22 +1,8 @@
 <script lang="ts" setup>
-import { selectProfileSchema } from "db/schema";
-import { z } from "zod";
+import { useProfileStore } from "store/profile";
 
-const user = useSupabaseUser();
-
-const profile = ref<z.infer<typeof selectProfileSchema> | null>(null);
-provide("profile", profile);
-watchEffect(() => {
-  if (user.value) {
-    const { data, status } = useFetch("/api/me", {
-      method: "GET",
-      headers: useRequestHeaders(["cookie"]),
-    });
-    if (status.value === "success")
-      profile.value = selectProfileSchema.parse(data.value);
-    if (status.value === "error") profile.value = null;
-  }
-});
+const profileStore = useProfileStore();
+const profile = profileStore.profile;
 </script>
 
 <template>
@@ -34,7 +20,9 @@ watchEffect(() => {
             <h1 class="text-4xl font-bold tracking-tighter">Products</h1>
           </NuxtLink>
           <div>
-            <div v-if="user"><UAvatar :alt="user.email"></UAvatar></div>
+            <div v-if="profile">
+              <UAvatar :alt="profile.name"></UAvatar>
+            </div>
             <div v-else class="flex space-x-4">
               <UButton to="/register">Sign Up</UButton>
               <UButton to="/login" color="gray" variant="solid">Login</UButton>
@@ -44,7 +32,7 @@ watchEffect(() => {
       </UContainer>
     </header>
     <div class="flex w-full">
-      <NuxtPage></NuxtPage>
+      <slot />
     </div>
     <footer
       class="border-t border-gray-200 bg-white/75 dark:border-gray-800 dark:bg-gray-900/75"

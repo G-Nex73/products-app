@@ -76,3 +76,5 @@ export const profiles = pgTable(
 );
 
 export const selectProfileSchema = createSelectSchema(profiles);
+
+export const insertProfileSchema = createInsertSchema(profiles);

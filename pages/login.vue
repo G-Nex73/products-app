@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { useProfileStore } from "store/profile";
 import { z } from "zod";
 
 definePageMeta({
@@ -6,7 +7,7 @@ definePageMeta({
   description: "Login to your account",
   middleware: ["auth"],
 });
-const { auth } = useSupabaseClient();
+
 const form = ref();
 const state = ref({
   email: "",
@@ -14,13 +15,31 @@ const state = ref({
   confirmPassword: "",
 });
 
-const submit = async () => {
+const { auth } = useSupabaseClient();
+const profileStore = useProfileStore();
+async function emailAuth() {
   await form.value!.validate();
-  auth.signInWithPassword({
+  const res = await auth.signInWithPassword({
     email: state.value.email,
     password: state.value.password,
   });
-};
+  if (!res.error) {
+    profileStore.fetchProfile();
+    navigateTo("/");
+  }
+}
+async function gitHubAuth() {
+  const res = await auth.signInWithOAuth({
+    provider: "github",
+    options: {
+      redirectTo: "http://localhost:3000/login",
+    },
+  });
+  if (!res.error) {
+    profileStore.fetchProfile();
+    navigateTo("/");
+  }
+}
 </script>
 
 <template>
@@ -49,7 +68,7 @@ const submit = async () => {
             "
             :state="state"
             class="mt-8 flex w-full flex-col items-center justify-center space-y-8"
-            @submit.prevent="submit()"
+            @submit.prevent="emailAuth()"
           >
             <UFormGroup
               :ui="{
@@ -93,6 +112,7 @@ const submit = async () => {
             variant="solid"
             color="gray"
             block
+            @click="gitHubAuth()"
             >Sign in with Github</UButton
           >
         </div></UCard

@@ -1075,7 +1075,7 @@
     unimport "^3.0.8"
     untyped "^1.3.2"
 
-"@nuxt/kit@^3.6.5":
+"@nuxt/kit@^3.5.0", "@nuxt/kit@^3.6.5":
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.7.0.tgz#14046349a7b12412e84782525ef802b65624268f"
   integrity sha512-bsPRb2NTLHRacjyybhhA3pZFIqo2pxB6bcP4FQDuzlGzVTI5PtJzbfNpkmQC7q+LZt8K0pNlxKVGisDvZctk6w==
@@ -1316,6 +1316,14 @@
     tailwindcss "~3.3.2"
     ufo "^1.1.2"
     uncrypto "^0.1.3"
+
+"@pinia/nuxt@^0.4.11":
+  version "0.4.11"
+  resolved "https://registry.yarnpkg.com/@pinia/nuxt/-/nuxt-0.4.11.tgz#1b3f728ae112d45deff5971376e05b8a8d64f720"
+  integrity sha512-bhuNFngJpmBCdAqWguezNJ/oJFR7wvKieqiZrmmdmPR07XjsidAw8RLXHMZE9kUm32M9E6T057OBbG/22jERTg==
+  dependencies:
+    "@nuxt/kit" "^3.5.0"
+    pinia ">=2.1.0"
 
 "@pkgjs/parseargs@^0.11.0":
   version "0.11.0"
@@ -2644,6 +2652,11 @@ chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.1, chalk@^4.1.2:
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
+
+chalk@^5.0.0, chalk@^5.3.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-5.3.0.tgz#67c20a7ebef70e7f3970a01f90fa210cb6860385"
+  integrity sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w==
 
 chalk@^5.2.0:
   version "5.2.0"
@@ -5258,7 +5271,7 @@ is-unicode-supported@^0.1.0:
   resolved "https://registry.npmjs.org/is-unicode-supported/-/is-unicode-supported-0.1.0.tgz"
   integrity sha512-knxG2q4UC3u8stRGyAVJCOdxFmv5DZiRcdlIaAQXAbSfJya+OhopNotLQrstBhququ4ZpuKbDc/8S6mgXgPFPw==
 
-is-unicode-supported@^1.2.0:
+is-unicode-supported@^1.1.0, is-unicode-supported@^1.2.0:
   version "1.3.0"
   resolved "https://registry.npmjs.org/is-unicode-supported/-/is-unicode-supported-1.3.0.tgz"
   integrity sha512-43r2mRvz+8JRIKnWJ+3j8JtjRKZ6GmjzfaE/qiBJnikNnYv/6bagRJ1kUhNk8R5EX/GkobD+r+sfxCPJsiKBLQ==
@@ -5663,6 +5676,14 @@ log-symbols@^4.1.0:
     chalk "^4.1.0"
     is-unicode-supported "^0.1.0"
 
+log-symbols@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-5.1.0.tgz#a20e3b9a5f53fac6aeb8e2bb22c07cf2c8f16d93"
+  integrity sha512-l0x2DvrW294C9uDCoQe1VSU4gf529FkSZ6leBl4TiqZH/e+0R7hSfHQBNut2mNygDgHwvYHfFLn6Oxb3VWj2rA==
+  dependencies:
+    chalk "^5.0.0"
+    is-unicode-supported "^1.1.0"
+
 lru-cache@^10.0.0:
   version "10.0.0"
   resolved "https://registry.npmjs.org/lru-cache/-/lru-cache-10.0.0.tgz"
@@ -6001,6 +6022,11 @@ mkdirp@^1.0.3:
   version "1.0.4"
   resolved "https://registry.npmjs.org/mkdirp/-/mkdirp-1.0.4.tgz"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
+
+mkdirp@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-3.0.1.tgz#e44e4c5607fb279c168241713cc6e0fea9adcb50"
+  integrity sha512-+NsyUUAZDmo6YVHzL/stxSu3t9YS1iljliy3BSDrXJ/dkn1KYdmtZODGGjLcc9XLgVVpH4KshHB8XmZgMhaBXg==
 
 mlly@^1.2.0, mlly@^1.3.0, mlly@^1.4.0:
   version "1.4.0"
@@ -6381,6 +6407,20 @@ nuxi@3.6.0:
   integrity sha512-gLmSE8NqNIz7HRPxBmO+Y+fgz95kMM25MzEoeuWLU/ZMWYqUOcvhsQEmv4ZZBfCe5/zv7+mO3G0UK1+Gi3QUoQ==
   optionalDependencies:
     fsevents "~2.3.2"
+
+nuxt-typed-router@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/nuxt-typed-router/-/nuxt-typed-router-3.3.1.tgz#fb3a7624881595f11de359f0489e242610e8596d"
+  integrity sha512-gO7qzU6s2C9rGQwX+d5Vkp8aQTQfKrxlCg1iSYGorvV6NZ/o71zHbyWcVACvzHCflNzQLSGhvuiPJDDvwz2JmQ==
+  dependencies:
+    "@nuxt/kit" "^3.6.5"
+    chalk "^5.3.0"
+    defu "^6.1.2"
+    lodash-es "^4.17.21"
+    log-symbols "^5.1.0"
+    mkdirp "^3.0.1"
+    nanoid "^4.0.2"
+    pathe "1.1.1"
 
 nuxt@^3.5.3, nuxt@^3.6.0:
   version "3.6.0"
@@ -6779,7 +6819,7 @@ path-type@^4.0.0:
   resolved "https://registry.npmjs.org/path-type/-/path-type-4.0.0.tgz"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
 
-pathe@^1.1.0, pathe@^1.1.1:
+pathe@1.1.1, pathe@^1.1.0, pathe@^1.1.1:
   version "1.1.1"
   resolved "https://registry.npmjs.org/pathe/-/pathe-1.1.1.tgz"
   integrity sha512-d+RQGp0MAYTIaDBIMmOfMwz3E+LOZnxx1HZd5R18mmCZY0QBlK0LDZfPc8FW8Ed2DlvsuE6PRjroDY+wg4+j/Q==
@@ -6889,6 +6929,14 @@ pify@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/pify/-/pify-3.0.0.tgz"
   integrity sha512-C3FsVNH1udSEX48gGX1xfvwTWfsYWj5U+8/uK15BGzIGrKoUpghX8hWZwa/OFnakBiiVNmBvemTJR5mcy7iPcg==
+
+pinia@>=2.1.0, pinia@^2.1.6:
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/pinia/-/pinia-2.1.6.tgz#e88959f14b61c4debd9c42d0c9944e2875cbe0fa"
+  integrity sha512-bIU6QuE5qZviMmct5XwCesXelb5VavdOWKWaB17ggk++NUwQWWbP5YnsONTk3b752QkW9sACiR81rorpeOMSvQ==
+  dependencies:
+    "@vue/devtools-api" "^6.5.0"
+    vue-demi ">=0.14.5"
 
 pinkie-promise@^2.0.0:
   version "2.0.1"

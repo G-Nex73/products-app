@@ -1,37 +1,44 @@
 <script lang="ts" setup>
 import { FormError } from "@nuxthq/ui/dist/runtime/types/form";
-import z from "zod";
+import { useProfileStore } from "store/profile";
+definePageMeta({ middleware: ["auth"] });
 
 const client = useSupabaseClient();
+const profileStore = useProfileStore();
+const profile = profileStore.profile;
 
 const form = ref();
 const state = ref({
-  name: "",
-  username: "",
+  name: profile?.name ?? "",
+  username: profile?.user_name ?? "",
 });
 
-const validate = async (s: typeof state.value): Promise<FormError[]> => {
+async function validate(s: typeof state.value): Promise<FormError[]> {
   const errors: FormError[] = [];
+
   if (!s.name) errors.push({ path: "name", message: "Required" });
   if (!s.username) errors.push({ path: "username", message: "Required" });
+
   const { data: uniqueUsername } = await client
     .from("profiles")
     .select("user_name")
     .eq("user_name", s.username);
-  console.log(uniqueUsername);
-  if (uniqueUsername?.length)
-    errors.push({ path: "username", message: "This username is not avlable" });
-  return errors;
-};
 
-const submit = async () => {
+  if (uniqueUsername?.length)
+    errors.push({
+      path: "username",
+      message: "This username is not available",
+    });
+  return errors;
+}
+
+async function submit() {
   await form.value!.validate();
-  const { data, status } = await useFetch("/api/me", {
-    method: "POST",
-    headers: useRequestHeaders(["cookie"]),
-    body: JSON.stringify(state.value),
+  profileStore.setProfile({
+    name: state.value.name,
+    user_name: state.value.username,
   });
-};
+}
 </script>
 
 <template>
@@ -89,15 +96,6 @@ const submit = async () => {
             ></UFormGroup>
             <UButton type="submit" block>Login</UButton>
           </UForm>
-          <UDivider class="mt-4"><template #icon>or</template></UDivider>
-          <UButton
-            class="mt-4 h-12"
-            leading-icon="i-mdi-github"
-            variant="solid"
-            color="gray"
-            block
-            >Sign in with Github</UButton
-          >
         </div></UCard
       ></UContainer
     >

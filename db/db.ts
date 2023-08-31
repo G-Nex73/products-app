@@ -1,11 +1,9 @@
 import { drizzle } from "drizzle-orm/node-postgres";
 import pg from "pg";
 
-const Client = pg.Client;
+const Pool = pg.Pool;
 
-const client = new Client({ connectionString: env.POOL_URL });
+const pool = new Pool({ connectionString: env.DB_URL });
 
-await client.connect();
-export default () => {
-  return drizzle(client);
-};
+// await pool.connect();
+export default drizzle(pool);
